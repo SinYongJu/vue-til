@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>선언적 렌더링</h1>
+    <div id="app">
+        {{message}}
+    </div>
+    <div id="app2"> 
+        <span v-bind:title="message">
+            Hover your mouse over me for a few seconds
+            to see my dynamically bound title!
+        </span>
+    </div>
+    <div id="appClick">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    <div id="appInput">
+       <input type="text" v-model="message">
+       <p>{{ message }}</p>
+    </div>
+    <div id="app7">
+        <ol>
+            <!--
+            Now we provide each todo-item with the todo object
+            it's representing, so that its content can be dynamic.
+            We also need to provide each component with a "key",
+            which will be explained later.
+            -->
+            <todo-item
+            v-for="item in groceryList"
+            v-bind:todo="item"
+            v-bind:key="item.id"
+            ></todo-item>
+        </ol>
+    </div>
+    <script>
+
+        // 선언적 렌더링
+        (function(){
+            'use strict'
+            var app = new Vue({
+                el : '#app',
+                data : {
+                    message : 'Hello Vue!'
+                }
+            })
+            var app2 = new Vue({
+                el : '#app2',
+                data : {
+                    message : 'Hello Vue! message'
+                }
+            })
+
+            var appClick = new Vue({
+                el : '#appClick',
+                data : {
+                    message : 'Hello Vue! message'
+                },
+                methods : {
+                    reverseMessage : function () {
+                        this.message = this.message.split('').reverse().join('')
+                    }
+                    
+                }
+
+            })
+            
+            Vue.component('todo-item', {
+                props:['todo'],
+                template : '<li>This is a {{ todo.text }}</li>'
+            })
+            var app7 = new Vue({
+                el : '#app7',
+                data : {
+                    groceryList: [
+                       { id: 0, text: 'Vegetables' },
+                       { id: 1, text: 'Cheese' },
+                       { id: 2, text: 'Whatever else humans are supposed to eat' }
+                    ]
+                }
+            })
+            var appInput = new Vue({
+                el : '#appInput',
+                data : {
+                    message : ''
+                },
+            })
+
+            
+        })()
+
+    </script>
+</body>
+</html>
