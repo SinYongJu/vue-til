@@ -7,6 +7,8 @@
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
     <h3>Installed CLI Plugins</h3>
+    <router-link to="/" tag="div">home</router-link>
+    <router-link to="/about" tag="div">about</router-link>
   </div>
 </template>
 
