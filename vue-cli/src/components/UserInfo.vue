@@ -1,23 +1,19 @@
 <template>
-  <div id="UserInfo">
-    id : {{ id }}
-    
-  </div>
+  <div id="UserInfo">id : {{ userId }}</div>
 </template>
 
 <script>
 export default {
   name: 'UserInfo',
   props: {
-    id: Number
+    id: String
   },
-  computed : {
-
+  computed: {
+    userId: function() {
+      return parseInt(this.id)
+    }
   }
 }
 </script>
 
-<style>
-#UserInfo {
-}
-</style>
+<style></style>
