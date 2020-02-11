@@ -3,35 +3,38 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home'
 import About from '../pages/About'
 import HelloWorld from '../components/HelloWorld'
-import UserInfo from '../components/UserInfo'
+// import UserInfo from '../components/UserInfo'
 
 Vue.use(VueRouter)
-
-// 임시
-const bool = true
-function protectRoute(to, from, next) {
-  // write protection logic to here
-  if (bool) {
-    return next()
-  }
-  next({
-    name: 'home'
-  })
-}
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', name: 'home', component: Home },
-    { path: '/about', name: 'about', component: About },
-    { path: '/hello', name: 'hello', component: HelloWorld },
-    {
-      path: '/user/:id',
-      name: 'user',
-      component: UserInfo,
-      beforeEnter: protectRoute,
-      props: true
-    }
-  ]
+    { path: '/about', meta: { requiresAuth: true }, name: 'about', component: About },
+    { path: '/hello', meta: { requiresAuth: true }, name: 'hello', component: HelloWorld },
+    { path: '*', redirect: '/' }
+    // {
+    //   path: '/user/:id',
+    //   name: 'user',
+    //   component: UserInfo,
+    //   // beforeEnter: protectRoute,
+    //   props: true
+    // }
+  ],
+  scrollBehavior: () => ({ y: 0 })
 })
+
+// navigation guard
+const _checkAuth = (isAuth, to, next) =>
+  isAuth ? next() : next({ path: '/', query: { redirect: to.fullPath } })
+
+const _checkRequiresAuth = (isAuth, to, next, hndr) =>
+  to.matched.some(({ meta }) => meta.requiresAuth) ? hndr(isAuth, to, next) : next()
+
+router.beforeEach((to, from, next) => {
+  let isAuth = false // vuex data bindings
+  _checkRequiresAuth(isAuth, to, next, _checkAuth)
+})
+
 export default router
