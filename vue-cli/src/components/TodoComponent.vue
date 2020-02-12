@@ -26,28 +26,29 @@
 <script>
 export default {
   name : 'TodoComponent',
+  props : {
+      todo : Array,
+      onClickInsert:Function,
+      onClickDelete : Function
+
+  },
   data : function (){
       return {
-        todo : [],
         title: '',
         desc : ''          
       }
   },
   methods : {
-      clickInsert: function (){
-          const insertId = this.todo.length > 0 && this.todo[this.todo.length-1].id + 1 || 0
-            this.todo = this.todo.concat({
-                id : insertId,
-                title : this.title,
-                desc : this.desc,
-            })
-            this.title = ''
-            this.desc = ''
-      },
-      clickDelete: function (targetIndex){
-          this.todo = this.todo.filter(todoItem => todoItem.id !== targetIndex)
-      }
+    clickInsert : function(){
+      this.onClickInsert(this.title,this.desc)
+      this.title = ''
+      this.desc = ''      
+    },  
+    clickDelete : function (id) {
+      this.onClickDelete(id)
+    }
   }
+ 
 }
 </script>
 
