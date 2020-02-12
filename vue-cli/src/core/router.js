@@ -12,9 +12,9 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', name: 'home', component: Index },
-    { path: '/home', name: 'home', component: Home },
-    { path: '/login', meta: { requiresAuth: true }, name: 'login', component: Login },
-    { path: '/about', meta: { requiresAuth: true }, name: 'about', component: About },
+    { path: '/login', name: 'login', component: Login },
+    { path: '/home', meta: { requiresAuth: true }, name: 'home', component: Home },
+    { path: '/about', meta: { requiresAuth: true }, name: 'about', component: About }, // local navigation guard
     { path: '/hello', meta: { requiresAuth: true }, name: 'hello', component: HelloWorld },
     { path: '*', redirect: '/' }
   ],

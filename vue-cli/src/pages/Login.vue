@@ -21,7 +21,7 @@ export default {
       pwd: ''
     }
   },
-  method: {
+  methods: {
     login: function() {
       console.log('login')
     }
