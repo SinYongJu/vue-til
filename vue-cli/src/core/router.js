@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home'
 import About from '../pages/About'
 import Login from '../pages/Login'
+import Index from '../pages/Index'
 import HelloWorld from '../components/HelloWorld'
 
 Vue.use(VueRouter)
