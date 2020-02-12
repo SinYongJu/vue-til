@@ -9,10 +9,12 @@
     <router-view></router-view>
     <br>
     <hr>
+    <TodoComponent />
   </div>
 </template>
 
 <script>
+import TodoComponent from './components/TodoComponent'
 export default {
   name: 'App',
   computed:{
@@ -23,6 +25,9 @@ export default {
     randomId : function (){
       return Math.floor(Math.random(20) * 10)
     }
+  },
+  components : {
+    TodoComponent : TodoComponent
   }
 }
 </script>
