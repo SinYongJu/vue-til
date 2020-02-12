@@ -10,7 +10,7 @@
             <label for="todoDesc"> Todo's desc : </label>
             <input type="text" id="todoDesc" v-model="desc">
         </div>
-        <button type="button" v-on:click="clickInsert">insert</button>
+        <button type="button" v-on:click="clickCreate">insert</button>
       </div>
       <ul>
           <li v-bind:key="todoItem.id" v-for="todoItem in todo">
@@ -28,7 +28,7 @@ export default {
   name : 'TodoComponent',
   props : {
       todo : Array,
-      onClickInsert:Function,
+      onClickCreate:Function,
       onClickDelete : Function
 
   },
@@ -39,10 +39,12 @@ export default {
       }
   },
   methods : {
-    clickInsert : function(){
-      this.onClickInsert(this.title,this.desc)
-      this.title = ''
-      this.desc = ''      
+    clickCreate : function(){
+      if(this.title.length > 4){
+        this.onClickCreate(this.title,this.desc)
+        this.title = ''
+        this.desc = ''      
+      }
     },  
     clickDelete : function (id) {
       this.onClickDelete(id)

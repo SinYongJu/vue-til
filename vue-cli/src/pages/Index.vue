@@ -4,7 +4,7 @@
     index
     <TodoComponent
       v-bind:todo="todo"
-      v-bind:onClickInsert="clickInsert"
+      v-bind:onClickCreate="clickCreate"
       v-bind:onClickDelete="clickDelete"
     />
   </div>
@@ -38,9 +38,11 @@ export default {
     TodoComponent: TodoComponent
   },
   methods: {
-    clickInsert: function(title, desc) {
-      const insertId = (this.todo.length > 0 && this.todo[this.todo.length - 1].id + 1) || 0
-      this.todo = this.todo.concat({
+    clickCreate: function(title, desc) {
+      const todoList = this.todo;
+      const lastItemId = todoList[todoList.length - 1].id;
+      const insertId = (todoList.length > 0 && lastItemId + 1) || 0
+      this.todo = todoList.concat({
         id: insertId,
         title,
         desc
