@@ -10,6 +10,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes: [
+    { path: '/', name: 'home', component: Index },
     { path: '/home', name: 'home', component: Home },
     { path: '/login', meta: { requiresAuth: true }, name: 'login', component: Login },
     { path: '/about', meta: { requiresAuth: true }, name: 'about', component: About },
