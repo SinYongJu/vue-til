@@ -21,6 +21,9 @@ export default {
     decrease() {
       this.count = --this.count
     }
+  },
+  created (){
+    console.log(this.$store)
   }
 }
 </script>
