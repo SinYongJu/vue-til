@@ -11,10 +11,13 @@
     <router-view></router-view>
     <br>
     <hr>
+    <CountComponent />
   </div>
 </template>
 
 <script>
+import CountComponent from './components/CountComponent'
+
 export default {
   name: 'App',
   computed:{
@@ -26,6 +29,9 @@ export default {
       return Math.floor(Math.random(20) * 10)
     }
   },
+  components : {
+    CountComponent
+  }
   
 }
 </script>
