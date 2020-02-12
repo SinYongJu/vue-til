@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link to="/" tag="div" >home</router-link>
+    <router-link to="/home" tag="div" >home</router-link>
     <router-link to="/about" tag="div">about</router-link>
     <router-link to="/hello" tag="div">hello</router-link>
     <router-link v-bind:to="userPath" tag="div">UserInfo</router-link>
