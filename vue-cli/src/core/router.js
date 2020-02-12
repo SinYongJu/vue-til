@@ -33,4 +33,6 @@ router.beforeEach((to, from, next) => {
   _checkRequiresAuth(isAuth, to, next, _checkAuth)
 })
 
+// navigation guard others...
+
 export default router

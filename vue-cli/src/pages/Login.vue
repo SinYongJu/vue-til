@@ -2,13 +2,13 @@
   <div id="Login">
     <div>
       <label for="inputId">id</label>
-      <input type="text" id="inputId" />
+      <input v-model="id" type="text" id="inputId" />
     </div>
     <div>
-      <label for="inputPwd">password</label>
-      <input type="text" id="inputPwd" />
+      <label for="inputPwd">pwd</label>
+      <input v-model="pwd" type="text" id="inputPwd" />
     </div>
-    <button type="button" v-on:click="login"></button>
+    <button type="button" v-on:click="login">login</button>
   </div>
 </template>
 
