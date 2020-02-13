@@ -5,7 +5,7 @@
     <button v-on:click="decrease">-</button>
     <button v-on:click="multiply2x">X2</button>
     <p>{{ computedCount }}</p>
-    <button v-on:click="timer5secLater">later 5 sec,Add 1</button>
+    <button v-on:click="timeout5secLater">later 5 sec,Add 1</button>
   </div>
 </template>
 
@@ -22,8 +22,8 @@ export default {
     ...mapActions(['timer']),
     multiply2x (){
       this.count !== 0 ? this.multiply({ num : 2 }) : false
-    }, // 요게 오버 라이딩 하는 방법인가 ,
-    timer5secLater (){
+    }, // 요게 사용 방법인가 ,
+    timeout5secLater (){
       this.timer({ timer : 5000 })
     }
   },
