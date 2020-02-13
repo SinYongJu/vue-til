@@ -1,18 +1,14 @@
 import vue from 'vue'
 import vuex from 'vuex'
-import countStore from './modules/countStore'
+import modules from './modules'
 
 vue.use(vuex)
 
-export const STORE_NAMES = {
-  COUNT_STORE: 'countStore'
-}
-
 const store = new vuex.Store({
+  // options
   strict: true,
-  modules: {
-    [STORE_NAMES.COUNT_STORE]: countStore
-  }
+  // modules
+  modules
 })
 
 export default store
