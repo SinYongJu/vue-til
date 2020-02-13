@@ -10,13 +10,12 @@
 </template>
 
 <script>
-import { mapState,mapGetters, mapMutations, mapActions } from 'vuex'
-// const { mapState,mapGetters, mapMutations, mapActions } = createNamespacedHelpers('countStore')
-const conutNameSpace = 'countStore'
-const countStoreMutations = mapMutations(conutNameSpace,['increase','decrease','multiply'])
-const countStoreActions = mapActions(conutNameSpace,['timer'])
-const countStoreGetters = mapGetters(conutNameSpace,['computedCount'])
-const countStoreState = mapState(conutNameSpace,{
+import { getStoreByNamespace, STORE_NAMES } from '../store/'
+const { mapState,mapGetters, mapMutations, mapActions } = getStoreByNamespace(STORE_NAMES.COUNT_STORE)
+const countStoreMutations = mapMutations(['increase','decrease','multiply'])
+const countStoreActions = mapActions(['timer'])
+const countStoreGetters = mapGetters(['computedCount'])
+const countStoreState = mapState({
    count : state => state.count,
 })
 
