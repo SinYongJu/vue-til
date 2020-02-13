@@ -10,20 +10,25 @@
 </template>
 
 <script>
-
-
 import { mapState,mapGetters, mapMutations, mapActions } from 'vuex'
 // const { mapState,mapGetters, mapMutations, mapActions } = createNamespacedHelpers('countStore')
+const conutNameSpace = 'countStore'
+const countStoreMutations = mapMutations(conutNameSpace,['increase','decrease','multiply'])
+const countStoreActions = mapActions(conutNameSpace,['timer'])
+const countStoreGetters = mapGetters(conutNameSpace,['computedCount'])
+const countStoreState = mapState(conutNameSpace,{
+   count : state => state.count,
+})
 
 export default {
   name: 'CountComponent',
   created:function(){
-    console.log(this)
+    console.log('create',this)
     console.log(this.$store)
   },
   methods: {
-    ...mapMutations('countStore',['increase','decrease','multiply']),
-    ...mapActions('countStore',['timer']),
+    ...countStoreMutations,
+    ...countStoreActions,
     multiply2x (){
       this.count !== 0 ? this.multiply({ num : 2 }) : false
     }, // 요게 사용 방법인가 ,
@@ -32,10 +37,9 @@ export default {
     }
   },
   computed: {
-  ...mapState('countStore',{
-    count : state => state.count,
-  }), // map state의 사용법
-  ...mapGetters('countStore', ['computedCount']) // mapGetters 사용법
+  ...countStoreState, // map state의 사용법
+  ...countStoreGetters // mapGetters 사용법
+  // (...) local computed...
   }
 }
 </script>
