@@ -12,14 +12,18 @@
 <script>
 
 
-import { createNamespacedHelpers } from 'vuex'
-const { mapState,mapGetters, mapMutations, mapActions } = createNamespacedHelpers('countStore')
+import { mapState,mapGetters, mapMutations, mapActions } from 'vuex'
+// const { mapState,mapGetters, mapMutations, mapActions } = createNamespacedHelpers('countStore')
 
 export default {
   name: 'CountComponent',
+  created:function(){
+    console.log(this)
+    console.log(this.$store)
+  },
   methods: {
-    ...mapMutations(['increase','decrease','multiply']),
-    ...mapActions(['timer']),
+    ...mapMutations('countStore',['increase','decrease','multiply']),
+    ...mapActions('countStore',['timer']),
     multiply2x (){
       this.count !== 0 ? this.multiply({ num : 2 }) : false
     }, // 요게 사용 방법인가 ,
@@ -28,10 +32,10 @@ export default {
     }
   },
   computed: {
-  ...mapState({
+  ...mapState('countStore',{
     count : state => state.count,
   }), // map state의 사용법
-  ...mapGetters(['computedCount']) // mapGetters 사용법
+  ...mapGetters('countStore', ['computedCount']) // mapGetters 사용법
   }
 }
 </script>

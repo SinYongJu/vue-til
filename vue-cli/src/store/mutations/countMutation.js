@@ -12,7 +12,6 @@ const COUNT_MUTATION = {
     state.count--
   },
   [COUNT_MUTATION_TYPE.MULTIPLY](state, payload) {
-    console.log(state, payload)
     state.count = state.count * payload.num
   }
 }

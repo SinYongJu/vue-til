@@ -15,6 +15,5 @@ const countState = {
   mutations: { ...COUNT_MUTATION },
   actions: { ...COUNT_ACTIONS }
 }
-console.log(countState)
 
 export default countState
