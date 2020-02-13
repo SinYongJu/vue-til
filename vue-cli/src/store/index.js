@@ -10,7 +10,6 @@ const countStore = {
 }
 const store = new vuex.Store({
   strict: true,
-  namespaced: true,
   modules: {
     countStore: { ...countStore }
   }
