@@ -1,17 +1,17 @@
 import vue from 'vue'
 import vuex from 'vuex'
-import countState from './modules/count'
+import countStore from './modules/countStore'
 
 vue.use(vuex)
 
-const countStore = {
-  namespaced: true,
-  ...countState
+export const STORE_NAMES = {
+  COUNT_STORE: 'countStore'
 }
+
 const store = new vuex.Store({
   strict: true,
   modules: {
-    countStore: { ...countStore }
+    [STORE_NAMES.COUNT_STORE]: countStore
   }
 })
 

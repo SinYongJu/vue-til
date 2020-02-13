@@ -9,11 +9,12 @@ const getters = {
   computedCount: state => `카운트는 ${state.count}`
 }
 
-const countState = {
+const countStore = {
+  namespaced: true,
   state,
   getters,
   mutations: { ...COUNT_MUTATION },
   actions: { ...COUNT_ACTIONS }
 }
 
-export default countState
+export default countStore
