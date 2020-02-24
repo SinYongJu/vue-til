@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "json" : "json-server --watch ./json-db/db.json --port 3000"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -20,9 +21,10 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
-    "vue-template-compiler": "^2.6.11",
+    "json-server": "^0.16.1",
     "node-sass": "^4.13.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,
