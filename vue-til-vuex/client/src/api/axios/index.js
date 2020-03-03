@@ -4,15 +4,15 @@ import axios from 'axios'
 const instance = axios.create()
 
 // set default header config
-instance.defaults.headers['Accept'] = 'application/json'
+instance.defaults.headers['Accept'] = 'application/json, text/plain, */*'
 instance.defaults.headers['Content-Type'] = 'application/json'
 
 // set default header auth token
-instance.defaults.headers.common['Authorization'] = 'AUTH_TOKEN'
+// instance.defaults.headers.common['Authorization'] = 'AUTH_TOKEN'
 
 // set default config
 // instance.defaults.baseURL = 'http://172.25.101.218:3000'
-instance.defaults.baseURL = 'http://localhost:3000'
+instance.defaults.baseURL = 'http://5e5dff73725f320014ed0f0e.mockapi.io/api/v1/suggest' // mockup api test
 instance.defaults.timeout = 10000
 
 // set default config - fn

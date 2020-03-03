@@ -1,29 +1,32 @@
 <template>
-    <div clas="search_comm">
-        <search-box :input-hndr="searchHndr" place-holder="search placeholder"/>
-        <transition>
-            <suggest-list />
-        </transition>
-    </div>
+  <div clas="search_comm">
+    <search-box :input-hndr="searchHndr" place-holder="search placeholder" />
+    <transition>
+      <suggest-list :suggest-list="suggestList" />
+    </transition>
+  </div>
 </template>
 
 <script>
-import SearchBox from "@comp/search/SearchBox";
-import SuggestList from "@comp/search/SuggestList";
+import SearchBox from '@comp/search/SearchBox'
+import SuggestList from '@comp/search/SuggestList'
 export default {
-    name : 'comp_search_box_with_suggest',
-    components : {
-        SearchBox,
-        SuggestList
+  name: 'comp_search_box_with_suggest',
+  components: {
+    SearchBox,
+    SuggestList
+  },
+  props: {
+    suggestList: {
+      type: Array,
+      default: () => []
     },
-    methods : {
-        searchHndr () {
-            console.log('search search')
-        }
+    searchHndr: {
+        type : Function,
+        required : true
     }
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

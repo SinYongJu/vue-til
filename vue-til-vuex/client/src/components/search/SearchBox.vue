@@ -1,6 +1,6 @@
 <template>
   <div class="box_search">
-    <input type="text" v-model="keyword" class="inp_comm" @keydown="inputHndr" :placeholder="placeHolder"/>
+    <input type="text" class="inp_comm" @keyup="inputHndr" :placeholder="placeHolder"/>
     <button type="button" class="btn_comm">검색</button>
   </div>
 </template>
@@ -18,11 +18,6 @@ export default {
           default : 'search ... '
       }
   },
-  data() {
-    return {
-      keyword: ''
-    }
-  }
 }
 </script>
 
