@@ -1,16 +1,24 @@
 <template>
   <div>
     <h2>index page</h2>
-    <MemberList/>
+    <!-- <MemberList/> -->
+    <!-- suggest -->
+    <search-box-with-suggest/>
+    <!-- //suggest -->
   </div>
 </template>
 
 <script>
-import MemberList from '@comp/memberList/MemberList.vue'
+import SearchBoxWithSuggest from '@comp/search/SearchBoxWithSuggest.vue'
 export default {
   name: 'page-index',
+  data(){
+    return {
+      keyword : ''
+    }
+  },
   components: {
-    MemberList
+    SearchBoxWithSuggest
   }
 }
 </script>
